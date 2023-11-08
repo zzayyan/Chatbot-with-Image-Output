@@ -1,3 +1,8 @@
+from google_images_search import GoogleImagesSearch
+from io import BytesIO
+from PIL import Image
+
+
 import tkinter as tk
 import io
 import random
@@ -93,18 +98,15 @@ class ChatbotGUI:
             self.chat_log.insert(tk.END, "ROBO: Bye! take care..\n")
 
     def search_image(self, query):
-        # Flickr API credentials
-        api_key = '103555879edf4570afd2e03a883eae54'
+        # Google Image Search API credentials
+        gis = GoogleImagesSearch('AIzaSyCo4WDXIcal8uSjVvNHdyDM4unwCwF220E','f4208521453734899')
 
         # Search for images based on user input
-        url = f'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={api_key}&text={query}&format=json&nojsoncallback=1'
-        response = requests.get(url)
-        data = response.json()
+        gis.search({'q': query, 'num': 1})
 
         # Display the first image to the GUI
-        if data['photos']['total'] > 0:
-            photo = data['photos']['photo'][0]
-            image_url = f'https://farm{photo["farm"]}.staticflickr.com/{photo["server"]}/{photo["id"]}_{photo["secret"]}.jpg'
+        for result in gis.results():
+            image_url = result.url
             image_response = requests.get(image_url)
             image_data = image_response.content
             photo = ImageTk.PhotoImage(Image.open(io.BytesIO(image_data)).resize((600, 400), resample=Image.LANCZOS))
@@ -119,3 +121,4 @@ class ChatbotGUI:
 root = tk.Tk()
 my_gui = ChatbotGUI(root)
 root.mainloop()
+
