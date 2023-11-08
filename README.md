@@ -1,2 +1,2 @@
-# Chatbot with Unsplash
- GUI Chatbot using python with unsplash API to display image based on user input
+# Chatbot with Image Output using API
+ GUI Chatbot using python with image search API to display image based on user input
