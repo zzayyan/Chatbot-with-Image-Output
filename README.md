@@ -1,2 +1,2 @@
 # Chatbot with Unsplash
- Proyek NLP
+ GUI Chatbot using python with unsplash API to display image based on user input
