@@ -16,7 +16,7 @@ from PIL import Image, ImageTk
 nltk.download('popular', quiet=True)
 
 
-with open('chatbot.txt','r', encoding='utf8', errors ='ignore') as fin:
+with open('chatbotEng.txt','r', encoding='utf8', errors ='ignore') as fin:
     raw = fin.read().lower()
 
 sent_tokens = nltk.sent_tokenize(raw)
