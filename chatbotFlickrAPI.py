@@ -107,7 +107,7 @@ class ChatbotGUI:
             image_url = f'https://farm{photo["farm"]}.staticflickr.com/{photo["server"]}/{photo["id"]}_{photo["secret"]}.jpg'
             image_response = requests.get(image_url)
             image_data = image_response.content
-            photo = ImageTk.PhotoImage(Image.open(io.BytesIO(image_data)).resize((600, 400), resample=Image.LANCZOS))
+            photo = ImageTk.PhotoImage(Image.open(io.BytesIO(image_data)).resize((300, 200), resample=Image.LANCZOS))
             if hasattr(self, 'label'):
                 self.label.configure(image=photo)
                 self.label.image = photo
